@@ -41,6 +41,8 @@ export default function MessageHoc({
   memoizedEmojiListItems,
   renderCustomMessage,
   currentGroupChannel,
+  displayNameType,
+  displayNamePostfix,
 }) {
   const { sender = {} } = message;
   const [showEdit, setShowEdit] = useState(false);
@@ -153,6 +155,8 @@ export default function MessageHoc({
               memoizedEmojiListItems={memoizedEmojiListItems}
               chainTop={chainTop}
               chainBottom={chainBottom}
+              displayNameType={displayNameType}
+              displayNamePostfix={displayNamePostfix}
             />
           ),
           [MessageTypes.OG]: (
@@ -191,6 +195,8 @@ export default function MessageHoc({
               memoizedEmojiListItems={memoizedEmojiListItems}
               chainTop={chainTop}
               chainBottom={chainBottom}
+              displayNameType={displayNameType}
+              displayNamePostfix={displayNamePostfix}
             />
           ),
           [MessageTypes.USER]: (
@@ -210,6 +216,8 @@ export default function MessageHoc({
               memoizedEmojiListItems={memoizedEmojiListItems}
               chainTop={chainTop}
               chainBottom={chainBottom}
+              displayNameType={displayNameType}
+              displayNamePostfix={displayNamePostfix}
             />
           ),
         }[getMessageType(message)]
@@ -275,6 +283,8 @@ MessageHoc.propTypes = {
     messageType: PropTypes.string,
     sender: PropTypes.shape({ userId: PropTypes.string }),
     ogMetaData: PropTypes.shape({}),
+    displayNameType: PropTypes.string,
+    displayNamePostfix: PropTypes.string,
   }),
   highLightedMessageId: PropTypes.oneOfType([
     PropTypes.string,

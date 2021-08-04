@@ -15,6 +15,7 @@ import {
   copyToClipboard,
   getMessageCreatedAt,
   getSenderName,
+  getSenderNameByType,
   getSenderProfileUrl,
   getIsSentFromStatus,
 } from './utils';
@@ -43,6 +44,8 @@ export default function Message(props) {
     memoizedEmojiListItems,
     chainTop,
     chainBottom,
+    displayNameType,
+    displayNamePostfix,
   } = props;
 
   if (!message) return null;
@@ -100,6 +103,8 @@ export default function Message(props) {
               memoizedEmojiListItems={memoizedEmojiListItems}
               chainTop={chainTop}
               chainBottom={chainBottom}
+              displayNameType={displayNameType}
+              displayNamePostfix={displayNamePostfix}
             />
           )
       }
@@ -393,6 +398,8 @@ function IncomingUserMessage({
   memoizedEmojiListItems,
   chainTop,
   chainBottom,
+  displayNameType,
+  displayNamePostfix,
 }) {
   const MemoizedMessageText = memoizedMessageText;
   const MemoizedEmojiListItems = memoizedEmojiListItems;
@@ -487,7 +494,7 @@ function IncomingUserMessage({
                 type={LabelTypography.CAPTION_2}
                 color={LabelColors.ONBACKGROUND_2}
               >
-                {getSenderName(message)}
+                {getSenderNameByType(message, displayNameType) + (displayNamePostfix?displayNamePostfix:"")}
               </Label>
             )
           }
@@ -647,6 +654,8 @@ IncomingUserMessage.propTypes = {
   memoizedEmojiListItems: PropTypes.func,
   chainTop: PropTypes.bool.isRequired,
   chainBottom: PropTypes.bool.isRequired,
+  displayNameType: PropTypes.string,
+  displayNamePostfix: PropTypes.string,
 };
 
 IncomingUserMessage.defaultProps = {

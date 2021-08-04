@@ -1,11 +1,11 @@
 import { a as _objectSpread2, c as _toConsumableArray, d as LocalizationContext, w as withSendbirdContext, b as _slicedToArray, u as uuidv4 } from './LocalizationContext-daa4f283.js';
 import React, { useContext, useRef, useState, useReducer, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { U as UPDATE_USER_INFO } from './actionTypes-a85c0eaa.js';
+import './actionTypes-a85c0eaa.js';
 import { I as IconButton, M as Modal, T as Type, a as TextButton, C as ContextMenu, b as MenuItems, c as MenuItem, d as CREATE_CHANNEL$1, U as UPDATE_USER_MESSAGE, L as LEAVE_CHANNEL, S as SEND_MESSAGE_START, e as UserProfileProvider } from './index-51e4eac7.js';
-import { C as ChannelAvatar } from './index-3eca0c0e.js';
+import { C as ChannelAvatar } from './index-c6651b9b.js';
 import { e as LabelStringSet, I as Icon, c as IconTypes, d as IconColors, L as Label, a as LabelTypography, b as LabelColors, A as Avatar, P as PlaceHolder, f as PlaceHolderTypes } from './index-bf9c565d.js';
-import { n as noop$1 } from './utils-53ba1773.js';
+import { n as noop$1 } from './utils-fe4679f2.js';
 import { B as Badge, i as isBroadcastChannelEnabled, a as isSuperGroupChannelEnabled, I as InviteMembers, c as createDefaultUserListQuery, b as createChannel, L as LeaveChannelModal } from './LeaveChannel-c2e8872e.js';
 import isToday from 'date-fns/isToday';
 import format from 'date-fns/format';
@@ -453,9 +453,7 @@ function ChannelHeader(_ref) {
     className: "sendbird-channel-header__title__right__user-id",
     type: LabelTypography.BODY_2,
     color: LabelColors.ONBACKGROUND_2
-  }, user.userId))), React.createElement("div", {
-    className: "sendbird-channel-header__right-icon"
-  }, iconButton));
+  }, user.userId))));
 }
 ChannelHeader.propTypes = {
   user: PropTypes.shape({
@@ -1274,44 +1272,6 @@ function ChannelList(props) {
     disableUserProfile: userDefinedDisableUserProfile,
     renderUserProfile: userDefinedRenderProfile
   }, React.createElement("div", {
-    className: "sendbird-channel-list__header"
-  }, React.createElement(ChannelHeader, {
-    renderHeader: renderHeader,
-    user: user,
-    onEdit: function onEdit() {
-      if (enableEditProfile) {
-        setShowProfileEdit(true);
-      }
-    },
-    allowProfileEdit: enableEditProfile,
-    iconButton: React.createElement(AddChannel, {
-      disabled: !isOnline,
-      userListQuery: userListQuery,
-      sdk: sdk,
-      channelListDispatcher: channelListDispatcher,
-      userId: userId,
-      userFilledApplicationUserListQuery: userFilledApplicationUserListQuery,
-      onBeforeCreateChannel: onBeforeCreateChannel
-    })
-  })), showProfileEdit && React.createElement(ConnectedEditUserProfile, {
-    onThemeChange: onThemeChange,
-    user: user,
-    onCancel: function onCancel() {
-      setShowProfileEdit(false);
-    },
-    onSubmit: function onSubmit(newName, newFile) {
-      sdk.updateCurrentUserInfoWithProfileImage(newName, newFile, function (updatedUser) {
-        userDispatcher({
-          type: UPDATE_USER_INFO,
-          payload: updatedUser
-        });
-
-        if (onProfileEditSuccess && typeof onProfileEditSuccess === 'function') {
-          onProfileEditSuccess(updatedUser);
-        }
-      });
-    }
-  }), React.createElement("div", {
     className: "sendbird-channel-list__body",
     onScroll: function onScroll(e) {
       var fetchMore = e.target.clientHeight + e.target.scrollTop === e.target.scrollHeight;

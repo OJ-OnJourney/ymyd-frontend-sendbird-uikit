@@ -153,46 +153,6 @@ function ChannelList(props) {
       disableUserProfile={userDefinedDisableUserProfile}
       renderUserProfile={userDefinedRenderProfile}
     >
-      <div className="sendbird-channel-list__header">
-        <ChannelHeader
-          renderHeader={renderHeader}
-          user={user}
-          onEdit={() => {
-            if (enableEditProfile) {
-              setShowProfileEdit(true);
-            }
-          }}
-          allowProfileEdit={enableEditProfile}
-          iconButton={(
-            <AddChannel
-              disabled={!isOnline}
-              userListQuery={userListQuery}
-              sdk={sdk}
-              channelListDispatcher={channelListDispatcher}
-              userId={userId}
-              userFilledApplicationUserListQuery={userFilledApplicationUserListQuery}
-              onBeforeCreateChannel={onBeforeCreateChannel}
-            />
-          )}
-        />
-      </div>
-      {
-        showProfileEdit && (
-          <EditUserProfile
-            onThemeChange={onThemeChange}
-            user={user}
-            onCancel={() => { setShowProfileEdit(false); }}
-            onSubmit={(newName, newFile) => {
-              sdk.updateCurrentUserInfoWithProfileImage(newName, newFile, (updatedUser) => {
-                userDispatcher({ type: userActions.UPDATE_USER_INFO, payload: updatedUser });
-                if (onProfileEditSuccess && typeof onProfileEditSuccess === 'function') {
-                  onProfileEditSuccess(updatedUser);
-                }
-              });
-            }}
-          />
-        )
-      }
       <div
         className="sendbird-channel-list__body"
         onScroll={(e) => {

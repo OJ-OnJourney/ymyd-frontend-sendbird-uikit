@@ -61,9 +61,6 @@ export default function ChannelHeader({
             </div>
           )
       }
-      <div className="sendbird-channel-header__right-icon">
-        {iconButton}
-      </div>
     </div>
   );
 }

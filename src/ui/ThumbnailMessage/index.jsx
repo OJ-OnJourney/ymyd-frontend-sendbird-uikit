@@ -22,7 +22,7 @@ import {
   unSupported,
 } from '../FileViewer/types';
 import {
-  getSenderName,
+  getSenderName,getSenderNameByType,
   getSenderProfileUrl,
 } from '../../utils/utils';
 import useMouseHover from '../../hooks/onMouseHover';
@@ -51,6 +51,8 @@ export default function ThumbnailMessage({
   memoizedEmojiListItems,
   chainTop,
   chainBottom,
+  displayNameType,
+  displayNamePostfix,
 }) {
   return (
     isByMe
@@ -85,6 +87,8 @@ export default function ThumbnailMessage({
           emojiAllMap={emojiAllMap}
           toggleReaction={toggleReaction}
           memoizedEmojiListItems={memoizedEmojiListItems}
+          displayNameType={displayNameType}
+          displayNamePostfix={displayNamePostfix}
         />
       )
   );
@@ -385,6 +389,8 @@ export function IncomingThumbnailMessage({
   memoizedEmojiListItems,
   chainTop,
   chainBottom,
+  displayNameType,
+  displayNamePostfix,
 }) {
   const {
     type,
@@ -438,7 +444,7 @@ export function IncomingThumbnailMessage({
             type={LabelTypography.CAPTION_2}
             color={LabelColors.ONBACKGROUND_2}
           >
-            {getSenderName(message) || ''}
+            {getSenderNameByType(message, displayNameType) + (displayNamePostfix?displayNamePostfix:"")}
           </Label>
         )
       }
@@ -727,6 +733,8 @@ IncomingThumbnailMessage.propTypes = {
   memoizedEmojiListItems: PropTypes.func.isRequired,
   chainTop: PropTypes.bool.isRequired,
   chainBottom: PropTypes.bool.isRequired,
+  displayNameType: PropTypes.string,
+  displayNamePostfix: PropTypes.string,
 };
 IncomingThumbnailMessage.defaultProps = {
   status: '',

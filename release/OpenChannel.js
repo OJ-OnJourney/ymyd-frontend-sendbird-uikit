@@ -5,7 +5,7 @@ import { I as IconButton, f as UserProfileContext, C as ContextMenu, b as MenuIt
 import { L as Label, a as LabelTypography, A as Avatar, I as Icon, c as IconTypes, d as IconColors, b as LabelColors, h as Loader, g as ImageRenderer, P as PlaceHolder, i as PlaceHolderTypes } from './index-bf9c565d.js';
 import format from 'date-fns/format';
 import 'react-dom';
-import { M as MessageInput, L as LinkLabel, i as isImage, a as isVideo, D as DateSeparator, F as FileViewer, c as compareIds } from './index-3db0570a.js';
+import { M as MessageInput, L as LinkLabel, i as isImage, a as isVideo, D as DateSeparator, F as FileViewer, c as compareIds } from './index-63b0b79c.js';
 import isSameDay from 'date-fns/isSameDay';
 
 var getMessageCreatedAt = function getMessageCreatedAt(message) {

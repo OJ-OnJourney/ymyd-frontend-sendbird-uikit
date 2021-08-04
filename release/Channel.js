@@ -2,16 +2,16 @@ import { c as _toConsumableArray, a as _objectSpread2, u as uuidv4$1, b as _slic
 import React, { useEffect, useCallback, useRef, useMemo, useState, useContext, useLayoutEffect, Component, useReducer } from 'react';
 import PropTypes from 'prop-types';
 import { h as SEND_USER_MESSAGE, S as SEND_MESSAGE_START, i as SEND_FILE_MESSAGE, U as UPDATE_USER_MESSAGE, D as DELETE_MESSAGE, E as EmojiListItems, C as ContextMenu, I as IconButton, b as MenuItems, c as MenuItem, f as UserProfileContext, g as UserProfile, a as TextButton, M as Modal, e as UserProfileProvider } from './index-51e4eac7.js';
-import { C as ChannelAvatar } from './index-3eca0c0e.js';
+import { C as ChannelAvatar } from './index-c6651b9b.js';
 import { g as ImageRenderer, I as Icon, c as IconTypes, h as Loader, d as IconColors, L as Label, a as LabelTypography, b as LabelColors, A as Avatar, P as PlaceHolder, i as PlaceHolderTypes, e as LabelStringSet } from './index-bf9c565d.js';
-import { a as getMessageCreatedAt$4, b as getSenderName$2, c as getSenderProfileUrl$2 } from './utils-53ba1773.js';
+import { a as getMessageCreatedAt$4, b as getSenderNameByType$1, c as getSenderProfileUrl$2 } from './utils-fe4679f2.js';
 import format from 'date-fns/format';
 import { M as MessageStatusType } from './type-0296584d.js';
 import { t as truncate, g as getIsSentFromStatus$3 } from './utils-cfdeb084.js';
 import 'react-dom';
-import { i as isImage, a as isVideo, c as compareIds, u as unSupported, L as LinkLabel, D as DateSeparator, M as MessageInput, F as FileViewer } from './index-3db0570a.js';
+import { i as isImage, a as isVideo, c as compareIds, u as unSupported, L as LinkLabel, D as DateSeparator, M as MessageInput, F as FileViewer } from './index-63b0b79c.js';
 import isSameDay from 'date-fns/isSameDay';
-import { c as copyToClipboard$1, g as getSenderProfileUrl$1, a as getSenderName$1, b as getMessageCreatedAt$5, d as getIsSentFromStatus$2 } from './utils-d7f59026.js';
+import { c as copyToClipboard$1, g as getSenderProfileUrl$1, a as getSenderNameByType, b as getMessageCreatedAt$5, d as getIsSentFromStatus$2 } from './utils-8c82a664.js';
 import 'date-fns/formatDistanceToNowStrict';
 
 var RESET_MESSAGES = 'RESET_MESSAGES';
@@ -2160,7 +2160,9 @@ function Message(props) {
       toggleReaction = props.toggleReaction,
       memoizedEmojiListItems = props.memoizedEmojiListItems,
       chainTop = props.chainTop,
-      chainBottom = props.chainBottom;
+      chainBottom = props.chainBottom,
+      displayNameType = props.displayNameType,
+      displayNamePostfix = props.displayNamePostfix;
   if (!message) return null;
   var outgoingMemoizedMessageText = useMemoizedMessageText({
     className: 'sendbird-user-message-word',
@@ -2201,7 +2203,9 @@ function Message(props) {
     memoizedMessageText: incomingMemoizedMessageText,
     memoizedEmojiListItems: memoizedEmojiListItems,
     chainTop: chainTop,
-    chainBottom: chainBottom
+    chainBottom: chainBottom,
+    displayNameType: displayNameType,
+    displayNamePostfix: displayNamePostfix
   }));
 }
 Message.propTypes = {
@@ -2450,7 +2454,9 @@ function IncomingUserMessage(_ref2) {
       memoizedMessageText = _ref2.memoizedMessageText,
       memoizedEmojiListItems = _ref2.memoizedEmojiListItems,
       chainTop = _ref2.chainTop,
-      chainBottom = _ref2.chainBottom;
+      chainBottom = _ref2.chainBottom,
+      displayNameType = _ref2.displayNameType,
+      displayNamePostfix = _ref2.displayNamePostfix;
   var MemoizedMessageText = memoizedMessageText;
   var MemoizedEmojiListItems = memoizedEmojiListItems;
   var messageRef = useRef(null);
@@ -2545,7 +2551,7 @@ function IncomingUserMessage(_ref2) {
     className: "sendbird-user-message__sender-name",
     type: LabelTypography.CAPTION_2,
     color: LabelColors.ONBACKGROUND_2
-  }, getSenderName$1(message)), React.createElement("div", {
+  }, getSenderNameByType(message, displayNameType) + (displayNamePostfix ? displayNamePostfix : "")), React.createElement("div", {
     className: "sendbird-user-message__text-balloon"
   }, React.createElement("div", {
     className: "sendbird-user-message__text-balloon__inner"
@@ -2664,7 +2670,9 @@ IncomingUserMessage.propTypes = {
   memoizedMessageText: PropTypes.func.isRequired,
   memoizedEmojiListItems: PropTypes.func,
   chainTop: PropTypes.bool.isRequired,
-  chainBottom: PropTypes.bool.isRequired
+  chainBottom: PropTypes.bool.isRequired,
+  displayNameType: PropTypes.string,
+  displayNamePostfix: PropTypes.string
 };
 IncomingUserMessage.defaultProps = {
   message: {},
@@ -2764,7 +2772,9 @@ function ThumbnailMessage(_ref) {
       toggleReaction = _ref.toggleReaction,
       memoizedEmojiListItems = _ref.memoizedEmojiListItems,
       chainTop = _ref.chainTop,
-      chainBottom = _ref.chainBottom;
+      chainBottom = _ref.chainBottom,
+      displayNameType = _ref.displayNameType,
+      displayNamePostfix = _ref.displayNamePostfix;
   return isByMe ? React.createElement(OutgoingThumbnailMessage, {
     userId: userId,
     status: status,
@@ -2791,7 +2801,9 @@ function ThumbnailMessage(_ref) {
     useReaction: useReaction,
     emojiAllMap: emojiAllMap,
     toggleReaction: toggleReaction,
-    memoizedEmojiListItems: memoizedEmojiListItems
+    memoizedEmojiListItems: memoizedEmojiListItems,
+    displayNameType: displayNameType,
+    displayNamePostfix: displayNamePostfix
   });
 }
 function OutgoingThumbnailMessage(_ref2) {
@@ -3043,7 +3055,9 @@ function IncomingThumbnailMessage(_ref3) {
       toggleReaction = _ref3.toggleReaction,
       memoizedEmojiListItems = _ref3.memoizedEmojiListItems,
       chainTop = _ref3.chainTop,
-      chainBottom = _ref3.chainBottom;
+      chainBottom = _ref3.chainBottom,
+      displayNameType = _ref3.displayNameType,
+      displayNamePostfix = _ref3.displayNamePostfix;
   var type = message.type,
       url = message.url,
       localUrl = message.localUrl,
@@ -3104,7 +3118,7 @@ function IncomingThumbnailMessage(_ref3) {
     className: "".concat(INCOMING_THUMBNAIL_MESSAGE, "__sender-name"),
     type: LabelTypography.CAPTION_2,
     color: LabelColors.ONBACKGROUND_2
-  }, getSenderName$2(message) || ''), React.createElement("div", {
+  }, getSenderNameByType$1(message, displayNameType) + (displayNamePostfix ? displayNamePostfix : "")), React.createElement("div", {
     className: "".concat(INCOMING_THUMBNAIL_MESSAGE, "--inner")
   }, React.createElement("div", {
     className: "".concat(INCOMING_THUMBNAIL_MESSAGE, "__body")
@@ -3333,7 +3347,9 @@ IncomingThumbnailMessage.propTypes = {
   toggleReaction: PropTypes.func.isRequired,
   memoizedEmojiListItems: PropTypes.func.isRequired,
   chainTop: PropTypes.bool.isRequired,
-  chainBottom: PropTypes.bool.isRequired
+  chainBottom: PropTypes.bool.isRequired,
+  displayNameType: PropTypes.string,
+  displayNamePostfix: PropTypes.string
 };
 IncomingThumbnailMessage.defaultProps = {
   status: ''
@@ -3373,7 +3389,9 @@ var MessageSwitch = function MessageSwitch(_ref) {
       toggleReaction = _ref.toggleReaction,
       memoizedEmojiListItems = _ref.memoizedEmojiListItems,
       chainTop = _ref.chainTop,
-      chainBottom = _ref.chainBottom;
+      chainBottom = _ref.chainBottom,
+      displayNameType = _ref.displayNameType,
+      displayNamePostfix = _ref.displayNamePostfix;
   return React.createElement("div", {
     className: "sendbird-file-message".concat(isByMe ? '--outgoing' : '--incoming')
   }, isByMe ? React.createElement(OutgoingFileMessage, {
@@ -3399,7 +3417,9 @@ var MessageSwitch = function MessageSwitch(_ref) {
     toggleReaction: toggleReaction,
     memoizedEmojiListItems: memoizedEmojiListItems,
     chainTop: chainTop,
-    chainBottom: chainBottom
+    chainBottom: chainBottom,
+    displayNameType: displayNameType,
+    displayNamePostfix: displayNamePostfix
   }));
 };
 
@@ -3410,7 +3430,7 @@ MessageSwitch.propTypes = {
   disabled: PropTypes.bool,
   showRemove: PropTypes.func,
   resendMessage: PropTypes.func,
-  status: PropTypes.string.isRequired,
+  status: PropTypes.string,
   useReaction: PropTypes.bool.isRequired,
   emojiAllMap: PropTypes.instanceOf(Map),
   membersMap: PropTypes.instanceOf(Map),
@@ -3639,7 +3659,9 @@ function IncomingFileMessage(_ref3) {
       toggleReaction = _ref3.toggleReaction,
       memoizedEmojiListItems = _ref3.memoizedEmojiListItems,
       chainTop = _ref3.chainTop,
-      chainBottom = _ref3.chainBottom;
+      chainBottom = _ref3.chainBottom,
+      displayNameType = _ref3.displayNameType,
+      displayNamePostfix = _ref3.displayNamePostfix;
 
   var openFileUrl = function openFileUrl() {
     window.open(message.url);
@@ -3737,7 +3759,7 @@ function IncomingFileMessage(_ref3) {
     className: "sendbird-file-message__incoming__body__sender-name",
     type: LabelTypography.CAPTION_2,
     color: LabelColors.ONBACKGROUND_2
-  }, getSenderName$2(message)), React.createElement("div", {
+  }, getSenderNameByType$1(message, displayNameType) + (displayNamePostfix ? displayNamePostfix : "")), React.createElement("div", {
     className: "sendbird-file-message__incoming__body__tooltip"
   }, React.createElement("div", {
     className: "sendbird-file-message__incoming__body__tooltip__inner"
@@ -3852,7 +3874,9 @@ IncomingFileMessage.propTypes = {
   toggleReaction: PropTypes.func,
   memoizedEmojiListItems: PropTypes.func,
   chainTop: PropTypes.bool.isRequired,
-  chainBottom: PropTypes.bool.isRequired
+  chainBottom: PropTypes.bool.isRequired,
+  displayNameType: PropTypes.string,
+  displayNamePostfix: PropTypes.string
 };
 IncomingFileMessage.defaultProps = {
   message: {},
@@ -4942,7 +4966,9 @@ function MessageHoc(_ref) {
       toggleReaction = _ref.toggleReaction,
       memoizedEmojiListItems = _ref.memoizedEmojiListItems,
       renderCustomMessage = _ref.renderCustomMessage,
-      currentGroupChannel = _ref.currentGroupChannel;
+      currentGroupChannel = _ref.currentGroupChannel,
+      displayNameType = _ref.displayNameType,
+      displayNamePostfix = _ref.displayNamePostfix;
   var _message$sender = message.sender,
       sender = _message$sender === void 0 ? {} : _message$sender;
 
@@ -5040,7 +5066,9 @@ function MessageHoc(_ref) {
     toggleReaction: toggleReaction,
     memoizedEmojiListItems: memoizedEmojiListItems,
     chainTop: chainTop,
-    chainBottom: chainBottom
+    chainBottom: chainBottom,
+    displayNameType: displayNameType,
+    displayNamePostfix: displayNamePostfix
   })), _defineProperty(_MessageTypes$ADMIN$M, MessageTypes.OG, React.createElement(OGMessageSwitch, {
     message: message,
     status: status,
@@ -5072,7 +5100,9 @@ function MessageHoc(_ref) {
     toggleReaction: toggleReaction,
     memoizedEmojiListItems: memoizedEmojiListItems,
     chainTop: chainTop,
-    chainBottom: chainBottom
+    chainBottom: chainBottom,
+    displayNameType: displayNameType,
+    displayNamePostfix: displayNamePostfix
   })), _defineProperty(_MessageTypes$ADMIN$M, MessageTypes.USER, React.createElement(Message, {
     message: message,
     disabled: disabled,
@@ -5088,7 +5118,9 @@ function MessageHoc(_ref) {
     toggleReaction: toggleReaction,
     memoizedEmojiListItems: memoizedEmojiListItems,
     chainTop: chainTop,
-    chainBottom: chainBottom
+    chainBottom: chainBottom,
+    displayNameType: displayNameType,
+    displayNamePostfix: displayNamePostfix
   })), _MessageTypes$ADMIN$M)[getMessageType(message)], showRemove && React.createElement(RemoveMessage, {
     onCloseModal: function onCloseModal() {
       return setShowRemove(false);
@@ -5133,7 +5165,9 @@ MessageHoc.propTypes = {
     sender: PropTypes.shape({
       userId: PropTypes.string
     }),
-    ogMetaData: PropTypes.shape({})
+    ogMetaData: PropTypes.shape({}),
+    displayNameType: PropTypes.string,
+    displayNamePostfix: PropTypes.string
   }),
   highLightedMessageId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   renderCustomMessage: PropTypes.func,
@@ -5279,7 +5313,9 @@ function (_Component) {
           currentGroupChannel = _this$props2.currentGroupChannel,
           memoizedEmojiListItems = _this$props2.memoizedEmojiListItems,
           showScrollBot = _this$props2.showScrollBot,
-          onClickScrollBot = _this$props2.onClickScrollBot;
+          onClickScrollBot = _this$props2.onClickScrollBot,
+          displayNameType = _this$props2.displayNameType,
+          displayNamePostfix = _this$props2.displayNamePostfix;
 
       if (allMessages.length < 1) {
         return React.createElement(PlaceHolder, {
@@ -5350,7 +5386,9 @@ function (_Component) {
           deleteMessage: deleteMessage,
           resendMessage: resendMessage,
           toggleReaction: toggleReaction,
-          memoizedEmojiListItems: memoizedEmojiListItems
+          memoizedEmojiListItems: memoizedEmojiListItems,
+          displayNameType: displayNameType,
+          displayNamePostfix: displayNamePostfix
         });
       }))), showScrollBot && React.createElement("div", {
         className: "sendbird-conversation__scroll-bottom-button",
@@ -5767,7 +5805,9 @@ var ConversationPanel = function ConversationPanel(props) {
       onChatHeaderActionClick = props.onChatHeaderActionClick,
       onBeforeSendUserMessage = props.onBeforeSendUserMessage,
       onBeforeSendFileMessage = props.onBeforeSendFileMessage,
-      onBeforeUpdateUserMessage = props.onBeforeUpdateUserMessage;
+      onBeforeUpdateUserMessage = props.onBeforeUpdateUserMessage,
+      displayNameType = props.displayNameType,
+      displayNamePostfix = props.displayNamePostfix;
   var sdk = sdkStore.sdk;
   var config = props.config;
   var sdkError = sdkStore.error;
@@ -6079,7 +6119,9 @@ var ConversationPanel = function ConversationPanel(props) {
     useMessageGrouping: useMessageGrouping,
     messagesDispatcher: messagesDispatcher,
     currentGroupChannel: currentGroupChannel,
-    memoizedEmojiListItems: memoizedEmojiListItems
+    memoizedEmojiListItems: memoizedEmojiListItems,
+    displayNameType: displayNameType,
+    displayNamePostfix: displayNamePostfix
   }), React.createElement("div", {
     className: "sendbird-conversation__footer"
   }, React.createElement(MessageInputWrapper$1, {

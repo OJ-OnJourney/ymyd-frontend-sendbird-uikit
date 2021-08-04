@@ -388,6 +388,8 @@ interface ChannelProps {
   renderChatHeader?: (props: RenderChatHeaderProps) => React.ReactNode;
   renderUserProfile?: (props: RenderUserProfileProps) => React.ReactNode;
   queries?: ChannelQueries;
+  displayNameType?: string;
+  displayNamePostfix?: string;
 }
 interface sendBirdSelectorsInterface {
   getSdk: (store: SendBirdState) => SendBirdSelectors.GetSdk;

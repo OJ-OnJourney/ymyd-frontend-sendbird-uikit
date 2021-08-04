@@ -99,6 +99,8 @@ export default class ConversationScroll extends Component {
       memoizedEmojiListItems,
       showScrollBot,
       onClickScrollBot,
+      displayNameType,
+      displayNamePostfix,
     } = this.props;
 
     if (allMessages.length < 1) {
@@ -186,6 +188,8 @@ export default class ConversationScroll extends Component {
                       resendMessage={resendMessage}
                       toggleReaction={toggleReaction}
                       memoizedEmojiListItems={memoizedEmojiListItems}
+                      displayNameType={displayNameType}
+                      displayNamePostfix={displayNamePostfix}
                     />
                   );
                 },

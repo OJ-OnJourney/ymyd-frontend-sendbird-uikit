@@ -12,6 +12,22 @@ export const getSenderName = (message) => (
   )
 );
 
+export const getSenderNameByType = (message, type) => {
+  if(message.sender){
+    // console.log("getSenderNameByType", message, type, message.sender)
+    if(type && message.sender.metaData && message.sender.metaData[type])
+      return message.sender.metaData[type];
+    
+    return (
+      message.sender.friendName
+      || message.sender.nickname
+      || message.sender.userId
+    )
+  }
+
+  return null
+};
+
 export const getSenderProfileUrl = (message) => message.sender && message.sender.profileUrl;
 
 export default {

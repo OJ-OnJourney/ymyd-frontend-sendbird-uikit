@@ -74,6 +74,8 @@ export const ConversationPanel = (props) => {
     onBeforeSendUserMessage,
     onBeforeSendFileMessage,
     onBeforeUpdateUserMessage,
+    displayNameType,
+    displayNamePostfix,
   } = props;
 
   const { sdk } = sdkStore;
@@ -370,6 +372,8 @@ export const ConversationPanel = (props) => {
               messagesDispatcher={messagesDispatcher}
               currentGroupChannel={currentGroupChannel}
               memoizedEmojiListItems={memoizedEmojiListItems}
+              displayNameType={displayNameType}
+              displayNamePostfix={displayNamePostfix}
             />
           )
       }

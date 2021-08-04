@@ -13,7 +13,7 @@ import MessageStatus from '../MessageStatus';
 import ContextMenu, { MenuItem, MenuItems } from '../ContextMenu';
 import EmojiReactions from '../EmojiReactions';
 
-import { getSenderProfileUrl, getSenderName, getMessageCreatedAt } from '../../utils/utils';
+import { getSenderProfileUrl, getSenderName, getSenderNameByType, getMessageCreatedAt } from '../../utils/utils';
 import { truncate, getIsSentFromStatus } from './utils';
 import useMouseHover from '../../hooks/onMouseHover';
 
@@ -49,6 +49,8 @@ const MessageSwitch = ({
   memoizedEmojiListItems,
   chainTop,
   chainBottom,
+  displayNameType,
+  displayNamePostfix,
 }) => (
   <div className={`sendbird-file-message${isByMe ? '--outgoing' : '--incoming'}`}>
     {
@@ -81,6 +83,8 @@ const MessageSwitch = ({
             memoizedEmojiListItems={memoizedEmojiListItems}
             chainTop={chainTop}
             chainBottom={chainBottom}
+            displayNameType={displayNameType}
+            displayNamePostfix={displayNamePostfix}
           />
         )
     }
@@ -94,7 +98,7 @@ MessageSwitch.propTypes = {
   disabled: PropTypes.bool,
   showRemove: PropTypes.func,
   resendMessage: PropTypes.func,
-  status: PropTypes.string.isRequired,
+  status: PropTypes.string,
   useReaction: PropTypes.bool.isRequired,
   emojiAllMap: PropTypes.instanceOf(Map),
   membersMap: PropTypes.instanceOf(Map),
@@ -353,6 +357,8 @@ export function IncomingFileMessage({
   memoizedEmojiListItems,
   chainTop,
   chainBottom,
+  displayNameType,
+  displayNamePostfix,
 }) {
   const openFileUrl = () => { window.open(message.url); };
   const messageRef = useRef(null);
@@ -445,7 +451,7 @@ export function IncomingFileMessage({
                 type={LabelTypography.CAPTION_2}
                 color={LabelColors.ONBACKGROUND_2}
               >
-                {getSenderName(message)}
+                {getSenderNameByType(message, displayNameType) + (displayNamePostfix?displayNamePostfix:"")}
               </Label>
             )
           }
@@ -611,6 +617,8 @@ IncomingFileMessage.propTypes = {
   memoizedEmojiListItems: PropTypes.func,
   chainTop: PropTypes.bool.isRequired,
   chainBottom: PropTypes.bool.isRequired,
+  displayNameType: PropTypes.string,
+  displayNamePostfix: PropTypes.string,
 };
 
 IncomingFileMessage.defaultProps = {
