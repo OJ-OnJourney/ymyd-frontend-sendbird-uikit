@@ -2,7 +2,7 @@ import format from 'date-fns/format';
 
 export const noop = () => {};
 
-export const getMessageCreatedAt = (message) => format(message.createdAt, 'p');
+export const getMessageCreatedAt = (message) => format(message.createdAt, 'HH:mm');
 
 export const getSenderName = (message) => (
   message.sender && (

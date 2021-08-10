@@ -93,7 +93,7 @@ export default function MessageHoc({
           hasSeperator && (
             <DateSeparator>
               <Label type={LabelTypography.CAPTION_2} color={LabelColors.ONBACKGROUND_2}>
-                {format(message.createdAt, 'MMMM dd, yyyy')}
+                {format(message.createdAt, 'yyyy년 MM월 dd일')}
               </Label>
             </DateSeparator>
           )
@@ -130,7 +130,7 @@ export default function MessageHoc({
         hasSeperator && (
           <DateSeparator>
             <Label type={LabelTypography.CAPTION_2} color={LabelColors.ONBACKGROUND_2}>
-              {format(message.createdAt, 'MMMM dd, yyyy')}
+              {format(message.createdAt, 'yyyy년 MM월 dd일')}
             </Label>
           </DateSeparator>
         )

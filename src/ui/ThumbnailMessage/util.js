@@ -1,7 +1,7 @@
 import format from 'date-fns/format';
 import MessageStatusType from '../MessageStatus/type';
 
-export const getMessageCreatedAt = (message) => format(message.createdAt, 'p');
+export const getMessageCreatedAt = (message) => format(message.createdAt, 'HH:mm');
 
 export const getIsSentFromStatus = (status) => (
   status === MessageStatusType.SENT

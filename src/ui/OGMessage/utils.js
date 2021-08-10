@@ -46,7 +46,7 @@ export const getSenderName = (message) => (
   )
 );
 
-export const getMessageCreatedAt = (message) => format(message.createdAt, 'p');
+export const getMessageCreatedAt = (message) => format(message.createdAt, 'HH:mm');
 
 export const checkOGIsEnalbed = (message) => {
   const { ogMetaData } = message;

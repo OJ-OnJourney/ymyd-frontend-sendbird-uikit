@@ -3,7 +3,7 @@ import React from 'react';
 import getStringSet from '../ui/Label/stringSet';
 
 const LocalizationContext = React.createContext({
-  stringSet: getStringSet('en'),
+  stringSet: getStringSet(),
 });
 
 interface LocalizationProviderProps {

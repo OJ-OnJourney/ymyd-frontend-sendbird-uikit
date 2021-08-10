@@ -1,4 +1,4 @@
-import { _ as __assign, a as _objectSpread2, b as _slicedToArray, u as uuidv4, g as getStringSet, S as SendbirdSdkContext, L as LocalizationProvider } from './LocalizationContext-daa4f283.js';
+import { _ as __assign, a as _objectSpread2, b as _slicedToArray, u as uuidv4, g as getStringSet, S as SendbirdSdkContext, L as LocalizationProvider } from './LocalizationContext-61e7d461.js';
 import React, { useLayoutEffect, useState, useEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
 import Sb from 'sendbird';
@@ -628,10 +628,10 @@ function Sendbird(props) {
   var isOnline = useConnectionStatus(sdkStore.sdk, logger);
   var localeStringSet = React.useMemo(function () {
     if (!stringSet) {
-      return getStringSet('en');
+      return getStringSet();
     }
 
-    return _objectSpread2({}, getStringSet('en'), {}, stringSet);
+    return _objectSpread2({}, getStringSet(), {}, stringSet);
   }, [stringSet]);
   return React.createElement(SendbirdSdkContext.Provider, {
     value: {

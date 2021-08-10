@@ -116,10 +116,10 @@ export default function Sendbird(props) {
 
   const localeStringSet = React.useMemo(() => {
     if (!stringSet) {
-      return getStringSet('en');
+      return getStringSet();
     }
     return {
-      ...getStringSet('en'),
+      ...getStringSet(),
       ...stringSet,
     };
   }, [stringSet]);

@@ -23,7 +23,7 @@ export const copyToClipboard = (text) => {
   return false;
 };
 
-export const getMessageCreatedAt = (message) => format(message.createdAt || 0, 'p');
+export const getMessageCreatedAt = (message) => format(message.createdAt || 0, 'HH:mm');
 
 export const getSenderName = (message) => (
   message.sender && (

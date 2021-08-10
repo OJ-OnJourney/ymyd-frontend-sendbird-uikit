@@ -1,17 +1,17 @@
-import { c as _toConsumableArray, a as _objectSpread2, u as uuidv4$1, b as _slicedToArray, k as _defineProperty, d as LocalizationContext, e as _inherits, f as _createClass, h as _classCallCheck, i as _possibleConstructorReturn, j as _getPrototypeOf, l as _assertThisInitialized, w as withSendbirdContext } from './LocalizationContext-daa4f283.js';
+import { c as _toConsumableArray, a as _objectSpread2, u as uuidv4$1, b as _slicedToArray, k as _defineProperty, d as LocalizationContext, e as _inherits, f as _createClass, h as _classCallCheck, i as _possibleConstructorReturn, j as _getPrototypeOf, l as _assertThisInitialized, w as withSendbirdContext } from './LocalizationContext-61e7d461.js';
 import React, { useEffect, useCallback, useRef, useMemo, useState, useContext, useLayoutEffect, Component, useReducer } from 'react';
 import PropTypes from 'prop-types';
-import { h as SEND_USER_MESSAGE, S as SEND_MESSAGE_START, i as SEND_FILE_MESSAGE, U as UPDATE_USER_MESSAGE, D as DELETE_MESSAGE, E as EmojiListItems, C as ContextMenu, I as IconButton, b as MenuItems, c as MenuItem, f as UserProfileContext, g as UserProfile, a as TextButton, M as Modal, e as UserProfileProvider } from './index-51e4eac7.js';
-import { C as ChannelAvatar } from './index-c6651b9b.js';
-import { g as ImageRenderer, I as Icon, c as IconTypes, h as Loader, d as IconColors, L as Label, a as LabelTypography, b as LabelColors, A as Avatar, P as PlaceHolder, i as PlaceHolderTypes, e as LabelStringSet } from './index-bf9c565d.js';
-import { a as getMessageCreatedAt$4, b as getSenderNameByType$1, c as getSenderProfileUrl$2 } from './utils-fe4679f2.js';
+import { h as SEND_USER_MESSAGE, S as SEND_MESSAGE_START, i as SEND_FILE_MESSAGE, U as UPDATE_USER_MESSAGE, D as DELETE_MESSAGE, E as EmojiListItems, C as ContextMenu, I as IconButton, b as MenuItems, c as MenuItem, f as UserProfileContext, g as UserProfile, a as TextButton, M as Modal, e as UserProfileProvider } from './index-3b4b8b19.js';
+import { C as ChannelAvatar } from './index-5cd3e021.js';
+import { g as ImageRenderer, I as Icon, c as IconTypes, h as Loader, d as IconColors, L as Label, a as LabelTypography, b as LabelColors, A as Avatar, P as PlaceHolder, i as PlaceHolderTypes, e as LabelStringSet } from './index-2d2cdc32.js';
+import { a as getMessageCreatedAt$4, b as getSenderNameByType$1, c as getSenderProfileUrl$2 } from './utils-43a307fa.js';
 import format from 'date-fns/format';
 import { M as MessageStatusType } from './type-0296584d.js';
 import { t as truncate, g as getIsSentFromStatus$3 } from './utils-cfdeb084.js';
 import 'react-dom';
-import { i as isImage, a as isVideo, c as compareIds, u as unSupported, L as LinkLabel, D as DateSeparator, M as MessageInput, F as FileViewer } from './index-63b0b79c.js';
+import { i as isImage, a as isVideo, c as compareIds, u as unSupported, L as LinkLabel, D as DateSeparator, M as MessageInput, F as FileViewer } from './index-6bc63ce6.js';
 import isSameDay from 'date-fns/isSameDay';
-import { c as copyToClipboard$1, g as getSenderProfileUrl$1, a as getSenderNameByType, b as getMessageCreatedAt$5, d as getIsSentFromStatus$2 } from './utils-8c82a664.js';
+import { c as copyToClipboard$1, g as getSenderProfileUrl$1, a as getSenderNameByType, b as getMessageCreatedAt$5, d as getIsSentFromStatus$2 } from './utils-6309e2aa.js';
 import 'date-fns/formatDistanceToNowStrict';
 
 var RESET_MESSAGES = 'RESET_MESSAGES';
@@ -2744,7 +2744,7 @@ AdminMessage.defaultProps = {
 };
 
 var getMessageCreatedAt$1 = function getMessageCreatedAt(message) {
-  return format(message.createdAt, 'p');
+  return format(message.createdAt, 'HH:mm');
 };
 var getIsSentFromStatus = function getIsSentFromStatus(status) {
   return status === MessageStatusType.SENT || status === MessageStatusType.DELIVERED || status === MessageStatusType.READ;
@@ -3910,7 +3910,7 @@ RemoveMessage.propTypes = {
 };
 
 var getMessageCreatedAt$2 = function getMessageCreatedAt(message) {
-  return format(message.createdAt, 'p');
+  return format(message.createdAt, 'HH:mm');
 };
 
 var GROUPING_PADDING$2 = '1px';
@@ -4227,7 +4227,7 @@ var getSenderName = function getSenderName(message) {
   return message.sender && (message.sender.friendName || message.sender.nickname || message.sender.userId);
 };
 var getMessageCreatedAt$3 = function getMessageCreatedAt(message) {
-  return format(message.createdAt, 'p');
+  return format(message.createdAt, 'HH:mm');
 };
 var checkOGIsEnalbed = function checkOGIsEnalbed(message) {
   var ogMetaData = message.ogMetaData;
@@ -5025,7 +5025,7 @@ function MessageHoc(_ref) {
     }, hasSeperator && React.createElement(DateSeparator, null, React.createElement(Label, {
       type: LabelTypography.CAPTION_2,
       color: LabelColors.ONBACKGROUND_2
-    }, format(message.createdAt, 'MMMM dd, yyyy'))), React.createElement(RenderedMessage, {
+    }, format(message.createdAt, 'yyyy년 MM월 dd일'))), React.createElement(RenderedMessage, {
       message: message
     }));
   }
@@ -5050,7 +5050,7 @@ function MessageHoc(_ref) {
   }, hasSeperator && React.createElement(DateSeparator, null, React.createElement(Label, {
     type: LabelTypography.CAPTION_2,
     color: LabelColors.ONBACKGROUND_2
-  }, format(message.createdAt, 'MMMM dd, yyyy'))), (_MessageTypes$ADMIN$M = {}, _defineProperty(_MessageTypes$ADMIN$M, MessageTypes.ADMIN, React.createElement(AdminMessage, {
+  }, format(message.createdAt, 'yyyy년 MM월 dd일'))), (_MessageTypes$ADMIN$M = {}, _defineProperty(_MessageTypes$ADMIN$M, MessageTypes.ADMIN, React.createElement(AdminMessage, {
     message: message
   })), _defineProperty(_MessageTypes$ADMIN$M, MessageTypes.FILE, React.createElement(MessageSwitch, {
     message: message,

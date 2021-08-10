@@ -50,5 +50,5 @@ Label.defaultProps = {
 
 const LabelTypography = Typography;
 const LabelColors = Colors;
-const LabelStringSet = getStringSet('en');
+const LabelStringSet = getStringSet();
 export { LabelTypography, LabelColors, LabelStringSet };

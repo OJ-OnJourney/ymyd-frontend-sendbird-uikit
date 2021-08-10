@@ -1,7 +1,7 @@
-import { _ as __assign, m as __spreadArrays, d as LocalizationContext, w as withSendbirdContext } from './LocalizationContext-daa4f283.js';
+import { _ as __assign, m as __spreadArrays, d as LocalizationContext, w as withSendbirdContext } from './LocalizationContext-61e7d461.js';
 import React, { useEffect, useCallback, useContext, useState, useReducer, useRef } from 'react';
 import 'prop-types';
-import { A as Avatar, L as Label, a as LabelTypography, b as LabelColors, c as IconTypes, I as Icon, d as IconColors, P as PlaceHolder, i as PlaceHolderTypes } from './index-bf9c565d.js';
+import { A as Avatar, L as Label, a as LabelTypography, b as LabelColors, c as IconTypes, I as Icon, d as IconColors, P as PlaceHolder, i as PlaceHolderTypes } from './index-2d2cdc32.js';
 import isToday from 'date-fns/isToday';
 import format from 'date-fns/format';
 import isYesterday from 'date-fns/isYesterday';
