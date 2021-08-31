@@ -87,6 +87,7 @@ export default function MessageHoc({
           sendbird-msg-hoc sendbird-msg--scroll-ref
           ${isAnimated ? 'sendbird-msg-hoc__highlighted' : ''}
         `}
+        onClick={()=>{}}
       >
         {/* date-seperator */}
         {
@@ -124,6 +125,7 @@ export default function MessageHoc({
         sendbird-msg-hoc sendbird-msg--scroll-ref
         ${isAnimated ? 'sendbird-msg-hoc__animated' : ''}
       `}
+      onClick={()=>{}}
     >
       {/* date-seperator */}
       {

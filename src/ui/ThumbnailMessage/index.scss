@@ -206,7 +206,7 @@
     // https://www.tutorialrepublic.com/faq/how-to-remove-white-space-under-an-image-using-css.php
     display: block;
     max-width: var(--sendbird-message-balloon-width);
-    max-height: 360px;
+    // max-height: 360px;
     border-radius: 16px;
   }
   .sendbird-outgoing-thumbnail-message-body__video-icon {

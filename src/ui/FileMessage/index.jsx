@@ -138,8 +138,8 @@ export function OutgoingFileMessage({
   chainTop,
   chainBottom,
 }) {
-  const url = message.plainUrl || message.url;
-  const openFileUrl = () => { window.open(url); };
+  const url = message.url || message.plainUrl ;
+  const openFileUrl = () => { console.log("OutgoingFileMessage:openFileUrl",message); window.open(url, "_system"); };
   const messageRef = useRef(null);
   const parentContainRef = useRef(null);
   const menuRef = useRef(null);
@@ -360,7 +360,7 @@ export function IncomingFileMessage({
   displayNameType,
   displayNamePostfix,
 }) {
-  const openFileUrl = () => { window.open(message.url); };
+  const openFileUrl = () => { console.log("IncomingFileMessage:openFileUrl",message); window.open(message.url, "_system"); };
   const messageRef = useRef(null);
   const {
     disableUserProfile,

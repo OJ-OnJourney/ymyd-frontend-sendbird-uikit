@@ -11,13 +11,13 @@ const TypingIndicatorText = ({ members }) => {
     return '';
   }
 
-  if (members && members.length === 1) {
-    return `${members[0].nickname} ${stringSet.TYPING_INDICATOR__IS_TYPING}`;
-  }
+  // if (members && members.length === 1) {
+  //   return `${members[0].nickname} ${stringSet.TYPING_INDICATOR__IS_TYPING}`;
+  // }
 
-  if (members && members.length === 2) {
-    return `${members[0].nickname} ${stringSet.TYPING_INDICATOR__AND} ${members[1].nickname} ${stringSet.TYPING_INDICATOR__ARE_TYPING}`;
-  }
+  // if (members && members.length === 2) {
+  //   return `${members[0].nickname} ${stringSet.TYPING_INDICATOR__AND} ${members[1].nickname} ${stringSet.TYPING_INDICATOR__ARE_TYPING}`;
+  // }
 
   return stringSet.TYPING_INDICATOR__MULTIPLE_TYPING;
 };

@@ -1,11 +1,11 @@
-import { d as LocalizationContext, n as uuidv4, m as __spreadArrays, _ as __assign, w as withSendbirdContext } from './LocalizationContext-61e7d461.js';
+import { d as LocalizationContext, n as uuidv4, m as __spreadArrays, _ as __assign, w as withSendbirdContext } from './LocalizationContext-12387caf.js';
 import React, { useContext, useRef, useState, useMemo, useEffect, useCallback, useReducer } from 'react';
 import 'prop-types';
-import { I as IconButton, f as UserProfileContext, C as ContextMenu, b as MenuItems, g as UserProfile, c as MenuItem, a as TextButton, M as Modal, h as SEND_USER_MESSAGE, S as SEND_MESSAGE_START, i as SEND_FILE_MESSAGE, U as UPDATE_USER_MESSAGE, D as DELETE_MESSAGE, e as UserProfileProvider } from './index-3b4b8b19.js';
-import { L as Label, a as LabelTypography, A as Avatar, I as Icon, c as IconTypes, d as IconColors, b as LabelColors, h as Loader, g as ImageRenderer, P as PlaceHolder, i as PlaceHolderTypes } from './index-2d2cdc32.js';
+import { I as IconButton, f as UserProfileContext, C as ContextMenu, b as MenuItems, g as UserProfile, c as MenuItem, a as TextButton, M as Modal, h as SEND_USER_MESSAGE, S as SEND_MESSAGE_START, i as SEND_FILE_MESSAGE, U as UPDATE_USER_MESSAGE, D as DELETE_MESSAGE, e as UserProfileProvider } from './index-998a5e7d.js';
+import { L as Label, a as LabelTypography, A as Avatar, I as Icon, c as IconTypes, d as IconColors, b as LabelColors, h as Loader, g as ImageRenderer, P as PlaceHolder, i as PlaceHolderTypes } from './index-a45cb81d.js';
 import format from 'date-fns/format';
 import 'react-dom';
-import { M as MessageInput, L as LinkLabel, i as isImage, a as isVideo, D as DateSeparator, F as FileViewer, c as compareIds } from './index-6bc63ce6.js';
+import { M as MessageInput, L as LinkLabel, i as isImage, a as isVideo, D as DateSeparator, F as FileViewer, c as compareIds } from './index-ad6cde30.js';
 import isSameDay from 'date-fns/isSameDay';
 
 var getMessageCreatedAt = function getMessageCreatedAt(message) {
@@ -1351,7 +1351,8 @@ function MessageHoc(_a) {
 
   if (RenderedMessage) {
     return React.createElement("div", {
-      className: "sendbird-msg-hoc sendbird-msg--scroll-ref"
+      className: "sendbird-msg-hoc sendbird-msg--scroll-ref",
+      onClick: function onClick() {}
     }, React.createElement(RenderedMessage, {
       message: message
     }));
@@ -1372,7 +1373,8 @@ function MessageHoc(_a) {
   }
 
   return React.createElement("div", {
-    className: "sendbird-msg-hoc sendbird-msg--scroll-ref"
+    className: "sendbird-msg-hoc sendbird-msg--scroll-ref",
+    onClick: function onClick() {}
   }, hasSeperator && React.createElement(DateSeparator, null, React.createElement(Label, {
     type: LabelTypography.CAPTION_2,
     color: LabelColors.ONBACKGROUND_2

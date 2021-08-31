@@ -159,7 +159,7 @@ const getStringSet = (lang = 'kr') => {
       TYPING_INDICATOR__IS_TYPING: '님이 입력중...',
       TYPING_INDICATOR__AND: '님과',
       TYPING_INDICATOR__ARE_TYPING: '님이 입력중...',
-      TYPING_INDICATOR__MULTIPLE_TYPING: 'Several people are typing...',
+      TYPING_INDICATOR__MULTIPLE_TYPING: '상대방이 입력중...',
       MESSAGE_STATUS__SENDING_FAILED: '메시지를 보낼 수 없습니다.',
       MESSAGE_STATUS__TRY_AGAIN: '다시 시도',
       MESSAGE_STATUS__OR: 'or',

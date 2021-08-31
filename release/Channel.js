@@ -1,17 +1,17 @@
-import { c as _toConsumableArray, a as _objectSpread2, u as uuidv4$1, b as _slicedToArray, k as _defineProperty, d as LocalizationContext, e as _inherits, f as _createClass, h as _classCallCheck, i as _possibleConstructorReturn, j as _getPrototypeOf, l as _assertThisInitialized, w as withSendbirdContext } from './LocalizationContext-61e7d461.js';
+import { c as _toConsumableArray, a as _objectSpread2, u as uuidv4$1, b as _slicedToArray, k as _defineProperty, d as LocalizationContext, e as _inherits, f as _createClass, h as _classCallCheck, i as _possibleConstructorReturn, j as _getPrototypeOf, l as _assertThisInitialized, w as withSendbirdContext } from './LocalizationContext-12387caf.js';
 import React, { useEffect, useCallback, useRef, useMemo, useState, useContext, useLayoutEffect, Component, useReducer } from 'react';
 import PropTypes from 'prop-types';
-import { h as SEND_USER_MESSAGE, S as SEND_MESSAGE_START, i as SEND_FILE_MESSAGE, U as UPDATE_USER_MESSAGE, D as DELETE_MESSAGE, E as EmojiListItems, C as ContextMenu, I as IconButton, b as MenuItems, c as MenuItem, f as UserProfileContext, g as UserProfile, a as TextButton, M as Modal, e as UserProfileProvider } from './index-3b4b8b19.js';
-import { C as ChannelAvatar } from './index-5cd3e021.js';
-import { g as ImageRenderer, I as Icon, c as IconTypes, h as Loader, d as IconColors, L as Label, a as LabelTypography, b as LabelColors, A as Avatar, P as PlaceHolder, i as PlaceHolderTypes, e as LabelStringSet } from './index-2d2cdc32.js';
+import { h as SEND_USER_MESSAGE, S as SEND_MESSAGE_START, i as SEND_FILE_MESSAGE, U as UPDATE_USER_MESSAGE, D as DELETE_MESSAGE, E as EmojiListItems, C as ContextMenu, I as IconButton, b as MenuItems, c as MenuItem, f as UserProfileContext, g as UserProfile, a as TextButton, M as Modal, e as UserProfileProvider } from './index-998a5e7d.js';
+import { C as ChannelAvatar } from './index-9f12be5e.js';
+import { g as ImageRenderer, I as Icon, c as IconTypes, h as Loader, d as IconColors, L as Label, a as LabelTypography, b as LabelColors, A as Avatar, P as PlaceHolder, i as PlaceHolderTypes, e as LabelStringSet } from './index-a45cb81d.js';
 import { a as getMessageCreatedAt$4, b as getSenderNameByType$1, c as getSenderProfileUrl$2 } from './utils-43a307fa.js';
 import format from 'date-fns/format';
 import { M as MessageStatusType } from './type-0296584d.js';
 import { t as truncate, g as getIsSentFromStatus$3 } from './utils-cfdeb084.js';
 import 'react-dom';
-import { i as isImage, a as isVideo, c as compareIds, u as unSupported, L as LinkLabel, D as DateSeparator, M as MessageInput, F as FileViewer } from './index-6bc63ce6.js';
+import { i as isImage, a as isVideo, c as compareIds, u as unSupported, L as LinkLabel, D as DateSeparator, M as MessageInput, F as FileViewer } from './index-ad6cde30.js';
 import isSameDay from 'date-fns/isSameDay';
-import { c as copyToClipboard$1, g as getSenderProfileUrl$1, a as getSenderNameByType, b as getMessageCreatedAt$5, d as getIsSentFromStatus$2 } from './utils-6309e2aa.js';
+import { g as getSenderProfileUrl$1, a as getSenderNameByType, c as copyToClipboard$1, b as getMessageCreatedAt$5, d as getIsSentFromStatus$2 } from './utils-6309e2aa.js';
 import 'date-fns/formatDistanceToNowStrict';
 
 var RESET_MESSAGES = 'RESET_MESSAGES';
@@ -2350,12 +2350,6 @@ function OutgoingUserMessage(_ref) {
         closeDropdown: closeDropdown,
         openLeft: true
       }, isMessageSent && React.createElement(MenuItem, {
-        className: "sendbird-user-message--copy",
-        onClick: function onClick() {
-          copyToClipboard$1(message.message);
-          closeDropdown();
-        }
-      }, "Copy"), isMessageSent && React.createElement(MenuItem, {
         onClick: function onClick() {
           if (disabled) {
             return;
@@ -2364,12 +2358,12 @@ function OutgoingUserMessage(_ref) {
           showEdit(true);
           closeDropdown();
         }
-      }, "Edit"), message && message.isResendable && message.isResendable() && React.createElement(MenuItem, {
+      }, "\uC218\uC815"), message && message.isResendable && message.isResendable() && React.createElement(MenuItem, {
         onClick: function onClick() {
           resendMessage(message);
           closeDropdown();
         }
-      }, "Resend"), React.createElement(MenuItem, {
+      }, "\uC7AC\uC804\uC1A1"), React.createElement(MenuItem, {
         onClick: function onClick() {
           if (disabled) {
             return;
@@ -2378,7 +2372,7 @@ function OutgoingUserMessage(_ref) {
           showRemove(true);
           closeDropdown();
         }
-      }, "Delete"));
+      }, "\uC0AD\uC81C"));
     }
   }), isMessageSent && useReaction && emojiAllMap.size > 0 && React.createElement(ContextMenu, {
     menuTrigger: function menuTrigger(toggleDropdown) {
@@ -3469,10 +3463,11 @@ function OutgoingFileMessage(_ref2) {
       memoizedEmojiListItems = _ref2.memoizedEmojiListItems,
       chainTop = _ref2.chainTop,
       chainBottom = _ref2.chainBottom;
-  var url = message.plainUrl || message.url;
+  var url = message.url || message.plainUrl;
 
   var openFileUrl = function openFileUrl() {
-    window.open(url);
+    console.log("OutgoingFileMessage:openFileUrl", message);
+    window.open(url, "_system");
   };
 
   var messageRef = useRef(null);
@@ -3664,7 +3659,8 @@ function IncomingFileMessage(_ref3) {
       displayNamePostfix = _ref3.displayNamePostfix;
 
   var openFileUrl = function openFileUrl() {
-    window.open(message.url);
+    console.log("IncomingFileMessage:openFileUrl", message);
+    window.open(message.url, "_system");
   };
 
   var messageRef = useRef(null);
@@ -5021,7 +5017,8 @@ function MessageHoc(_ref) {
   if (RenderedMessage) {
     return React.createElement("div", {
       ref: useMessageScrollRef,
-      className: "\n          sendbird-msg-hoc sendbird-msg--scroll-ref\n          ".concat(isAnimated ? 'sendbird-msg-hoc__highlighted' : '', "\n        ")
+      className: "\n          sendbird-msg-hoc sendbird-msg--scroll-ref\n          ".concat(isAnimated ? 'sendbird-msg-hoc__highlighted' : '', "\n        "),
+      onClick: function onClick() {}
     }, hasSeperator && React.createElement(DateSeparator, null, React.createElement(Label, {
       type: LabelTypography.CAPTION_2,
       color: LabelColors.ONBACKGROUND_2
@@ -5046,7 +5043,8 @@ function MessageHoc(_ref) {
 
   return React.createElement("div", {
     ref: useMessageScrollRef,
-    className: "\n        sendbird-msg-hoc sendbird-msg--scroll-ref\n        ".concat(isAnimated ? 'sendbird-msg-hoc__animated' : '', "\n      ")
+    className: "\n        sendbird-msg-hoc sendbird-msg--scroll-ref\n        ".concat(isAnimated ? 'sendbird-msg-hoc__animated' : '', "\n      "),
+    onClick: function onClick() {}
   }, hasSeperator && React.createElement(DateSeparator, null, React.createElement(Label, {
     type: LabelTypography.CAPTION_2,
     color: LabelColors.ONBACKGROUND_2
@@ -5520,15 +5518,13 @@ var TypingIndicatorText = function TypingIndicatorText(_ref) {
 
   if (!members || members.length === 0) {
     return '';
-  }
+  } // if (members && members.length === 1) {
+  //   return `${members[0].nickname} ${stringSet.TYPING_INDICATOR__IS_TYPING}`;
+  // }
+  // if (members && members.length === 2) {
+  //   return `${members[0].nickname} ${stringSet.TYPING_INDICATOR__AND} ${members[1].nickname} ${stringSet.TYPING_INDICATOR__ARE_TYPING}`;
+  // }
 
-  if (members && members.length === 1) {
-    return "".concat(members[0].nickname, " ").concat(stringSet.TYPING_INDICATOR__IS_TYPING);
-  }
-
-  if (members && members.length === 2) {
-    return "".concat(members[0].nickname, " ").concat(stringSet.TYPING_INDICATOR__AND, " ").concat(members[1].nickname, " ").concat(stringSet.TYPING_INDICATOR__ARE_TYPING);
-  }
 
   return stringSet.TYPING_INDICATOR__MULTIPLE_TYPING;
 };

@@ -253,23 +253,13 @@ function OutgoingUserMessage({
                     {
                       isMessageSent && (
                         <MenuItem
-                          className="sendbird-user-message--copy"
-                          onClick={() => { copyToClipboard(message.message); closeDropdown(); }}
-                        >
-                          Copy
-                        </MenuItem>
-                      )
-                    }
-                    {
-                      isMessageSent && (
-                        <MenuItem
                           onClick={() => {
                             if (disabled) { return; }
                             showEdit(true);
                             closeDropdown();
                           }}
                         >
-                          Edit
+                          수정
                         </MenuItem>
                       )
                     }
@@ -281,7 +271,7 @@ function OutgoingUserMessage({
                             closeDropdown();
                           }}
                         >
-                          Resend
+                          재전송
                         </MenuItem>
                       )
                     }
@@ -292,7 +282,7 @@ function OutgoingUserMessage({
                         closeDropdown();
                       }}
                     >
-                      Delete
+                      삭제
                     </MenuItem>
                   </MenuItems>
                 );

@@ -87,7 +87,7 @@ export default function MessageHoc({
 
   if(RenderedMessage) {
     return (
-      <div className="sendbird-msg-hoc sendbird-msg--scroll-ref">
+      <div className="sendbird-msg-hoc sendbird-msg--scroll-ref" onClick={()=>{}}>
         <RenderedMessage message={message} />
       </div>
     );
@@ -108,7 +108,7 @@ export default function MessageHoc({
   }
 
   return (
-    <div className="sendbird-msg-hoc sendbird-msg--scroll-ref">
+    <div className="sendbird-msg-hoc sendbird-msg--scroll-ref" onClick={()=>{}}>
       {/* date-seperator */}
       {
         hasSeperator && (

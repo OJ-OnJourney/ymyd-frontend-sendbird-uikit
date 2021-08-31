@@ -3,5 +3,6 @@
 }
 
 .sendbird-image-renderer__hidden-image-loader {
-  display: none;
+  // display: none;
+  object-fit: contain;
 }

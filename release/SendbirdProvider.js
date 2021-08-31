@@ -1,4 +1,4 @@
-import { _ as __assign, a as _objectSpread2, b as _slicedToArray, u as uuidv4, g as getStringSet, S as SendbirdSdkContext, L as LocalizationProvider } from './LocalizationContext-61e7d461.js';
+import { _ as __assign, a as _objectSpread2, b as _slicedToArray, u as uuidv4, g as getStringSet, S as SendbirdSdkContext, L as LocalizationProvider } from './LocalizationContext-12387caf.js';
 import React, { useLayoutEffect, useState, useEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
 import Sb from 'sendbird';

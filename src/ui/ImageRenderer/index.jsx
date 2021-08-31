@@ -37,7 +37,8 @@ export default function ImageRenderer({
     >
       {
         showDefaultComponent
-          ? (DefaultComponent)
+          && ((DefaultComponent)?
+          DefaultComponent
           : (
             <div
               className="sendbird-image-renderer__image"
@@ -51,12 +52,12 @@ export default function ImageRenderer({
                 borderRadius: circle ? '50%' : null,
               }}
             />
-          )
+          ))
       }
       <img
         className="sendbird-image-renderer__hidden-image-loader"
         alt={alt}
-        onError={() => setShowDefaultComponent(true)}
+        onError={(e) => {console.log("ImageRenderer:onError", e); setShowDefaultComponent(true)}}
         src={url}
       />
     </div>
