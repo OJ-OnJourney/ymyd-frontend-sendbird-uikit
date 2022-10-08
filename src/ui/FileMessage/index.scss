@@ -66,6 +66,9 @@
     max-width: var(--sendbird-message-balloon-width);
     box-sizing: border-box;
     border-radius: 16px;
+    overflow: hidden;
+    transform: translateZ(0);
+    z-index: 0;
     @include themed() {
       background-color: t(primary-3);
     }

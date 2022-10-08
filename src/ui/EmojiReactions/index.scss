@@ -3,6 +3,9 @@
 .sendbird-emoji-reactions {
   display: inline-block;
   border-radius: 16px;
+  overflow: hidden;
+  transform: translateZ(0);
+  z-index: 0;
   max-width: var(--sendbird-message-balloon-width);
   box-sizing: border-box;
   min-height: 24px;

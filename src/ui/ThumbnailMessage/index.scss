@@ -26,6 +26,9 @@
     display: flex;
     flex-direction: column;
     border-radius: 16px;
+    overflow: hidden;
+    transform: translateZ(0);
+    z-index: 0;
     margin: 8px 0px;
     @include themed() {
       background-color: t(bg-1);
@@ -62,6 +65,9 @@
         top: 0;
         left: 0;
         border-radius: 16px;
+        overflow: hidden;
+        transform: translateZ(0);
+        z-index: 0;
         @include themed() {
           background-color: t(overlay-2);
         }
@@ -104,6 +110,9 @@
     max-width: var(--sendbird-message-balloon-width);
     max-height: 360px;
     border-radius: 16px;
+    overflow: hidden;
+    transform: translateZ(0);
+    z-index: 0;
   }
 }
 
@@ -151,6 +160,9 @@
       display: flex;
       flex-direction: column;
       border-radius: 16px;
+      overflow: hidden;
+      transform: translateZ(0);
+      z-index: 0;
       @include themed() {
         background-color: t(bg-1);
       }
@@ -187,6 +199,9 @@
           top: 0;
           left: 0;
           border-radius: 16px;
+          overflow: hidden;
+          transform: translateZ(0);
+          z-index: 0;
           @include themed() {
             background-color: t(overlay-2);
           }
@@ -208,6 +223,9 @@
     max-width: var(--sendbird-message-balloon-width);
     // max-height: 360px;
     border-radius: 16px;
+    overflow: hidden;
+    transform: translateZ(0);
+    z-index: 0;
   }
   .sendbird-outgoing-thumbnail-message-body__video-icon {
     position: absolute;
@@ -250,6 +268,9 @@
       display: flex;
       flex-direction: column;
       border-radius: 16px;
+      overflow: hidden;
+      transform: translateZ(0);
+      z-index: 0;
       @include themed() {
         background-color: t(bg-1);
       }
@@ -286,6 +307,9 @@
           top: 0px;
           left: 0px;
           border-radius: 16px;
+          overflow: hidden;
+          transform: translateZ(0);
+          z-index: 0;
           @include themed() {
             background-color: t(overlay-2);
           }
@@ -306,6 +330,9 @@
     max-width: var(--sendbird-message-balloon-width);
     max-height: 360px;
     border-radius: 16px;
+    overflow: hidden;
+    transform: translateZ(0);
+    z-index: 0;
   }
   .sendbird-incoming-thumbnail-message__video-icon {
     position: absolute;
